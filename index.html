@@ -4,8 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>AI 旅行助手 · 河南省潢川县深度攻略</title>
-  <meta name="description" content="潢川县深度旅游攻略：精选景点、3日路线、精美配图与女性语音讲解。纯静态网页，打开即用。" />
-  <link rel="preconnect" href="https://images.unsplash.com" />
+  <meta name="description" content="潢川县深度旅游攻略：精选景点、3日路线、精美配图与甜美女声语音讲解。纯静态网页，打开即用。" />
   <style>
     :root{
       --bg:#070b18;
@@ -16,7 +15,6 @@
       --accent:#7aa2ff;
       --gold:#e6c17a;
       --good:#6ee7b7;
-      --bad:#fb7185;
       --shadow: 0 18px 50px rgba(0,0,0,.45);
       --r:18px;
     }
@@ -31,7 +29,6 @@
         radial-gradient(800px 500px at 50% 120%, #183a2b, transparent 55%),
         var(--bg);
     }
-    a{color:inherit}
     header{position:relative; overflow:hidden; padding:88px 18px 112px; text-align:center;}
     .heroBg{
       position:absolute; inset:0; z-index:-1; opacity:.36;
@@ -103,17 +100,9 @@
       border-color: rgba(122,162,255,.55);
       box-shadow: 0 18px 48px rgba(0,0,0,.45);
     }
-    .spotGrid{
-      display:grid; grid-template-columns: 1fr; gap:0;
-    }
-    .spotMedia{
-      position:relative;
-      height:260px;
-      background:#0c1226;
-    }
-    .spotMedia img{
-      width:100%; height:100%; object-fit:cover; display:block;
-    }
+    .spotGrid{display:grid; grid-template-columns: 1fr; gap:0;}
+    .spotMedia{position:relative; height:260px; background:#0c1226;}
+    .spotMedia img{width:100%; height:100%; object-fit:cover; display:block;}
     .badge{
       position:absolute; left:14px; top:14px;
       padding:6px 10px; border-radius:999px;
@@ -125,19 +114,12 @@
     .spotBody{padding:14px 14px 16px}
     .spotTitle{display:flex; gap:10px; align-items:baseline; justify-content:space-between; flex-wrap:wrap}
     .spotTitle h3{margin:0; font-size:18px}
-    .meta{color:var(--muted); font-size:12px}
+    .meta{color:var(--muted); font-size:12px; line-height:1.45}
     .tags{display:flex; gap:8px; flex-wrap:wrap; margin:10px 0 10px}
     .tag{font-size:12px; color:#061022; background:var(--gold); padding:4px 8px; border-radius:999px;}
     .hl{margin:0; color:var(--txt); line-height:1.65}
-    .kv{
-      display:grid; grid-template-columns: 1fr 1fr;
-      gap:10px; margin-top:12px;
-      color:var(--muted); font-size:12px;
-    }
-    .kv div{
-      padding:10px; border:1px solid rgba(255,255,255,.14);
-      border-radius:14px; background:rgba(0,0,0,.12);
-    }
+    .kv{display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-top:12px; color:var(--muted); font-size:12px;}
+    .kv div{padding:10px; border:1px solid rgba(255,255,255,.14); border-radius:14px; background:rgba(0,0,0,.12);}
     .spotActions{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px}
     .linkBtn{
       padding:9px 12px; border-radius:999px; font-size:13px;
@@ -160,8 +142,7 @@
       background: linear-gradient(135deg, rgba(122,162,255,.18), rgba(230,193,122,.12));
     }
     footer{padding:26px; text-align:center; color:var(--muted)}
-    .warn{color:rgba(255,255,255,.75)}
-    .ok{color:var(--good)}
+    code{color:#d7e3ff}
   </style>
 </head>
 <body>
@@ -170,13 +151,13 @@
   <div class="heroGlow"></div>
   <h1>河南省潢川县 · AI 深度旅游攻略</h1>
   <p class="sub">
-    这是一份“像产品一样”的旅游攻略 Demo：精选景点、三日路线、精美配图，并带<strong>女性温柔导游语音</strong>讲解。
-    纯静态网页，一条链接即可访问与聆听。
+    产品展示级 Demo：精选景点、三日路线、固定配图，并带<strong>甜美女声导游语音</strong>讲解。
+    这是纯静态网页：你把它丢到 GitHub Pages，就能得到一条链接，打开即可使用与聆听。
   </p>
   <div class="pillRow">
     <div class="pill">📍 城市：潢川县</div>
-    <div class="pill">🗺️ 类型筛选：自然 / 历史 / 亲子 / 夜游</div>
-    <div class="pill">🎧 语音：优先女声（系统可用则更佳）</div>
+    <div class="pill">🖼️ 图片：固定直链（不乱）</div>
+    <div class="pill">🎧 语音：优先 MP3（稳定好听），无 MP3 自动兜底系统女声</div>
   </div>
 </header>
 
@@ -188,7 +169,10 @@
         <div class="topbar">
           <div>
             <h2 style="margin:0 0 6px">精选景点 · Top 8</h2>
-            <div class="small">提示：图片来自 Unsplash 自动检索；地图按钮会打开高德搜索页（无需暴露 Key）。</div>
+            <div class="small">
+              语音优先播放仓库里的 <code>/audio/spot1.mp3</code> … <code>/audio/spot8.mp3</code>。
+              如果你还没生成 MP3，网页会自动使用浏览器“中文女声”兜底（甜一点：更高 pitch + 更轻快语速）。
+            </div>
           </div>
           <div class="btnRow">
             <button class="btn" id="playAll">播放整段导览</button>
@@ -219,17 +203,15 @@
         <h3 class="sectionTitle" style="margin-top:16px">交通到达</h3>
         <ul class="list" id="traffic"></ul>
 
-        <h3 class="sectionTitle" style="margin-top:16px">语音说明</h3>
+        <h3 class="sectionTitle" style="margin-top:16px">部署与音频说明</h3>
         <p class="small">
-          本页使用浏览器 Web Speech API 进行讲解：会尝试选择<strong>中文女声</strong>；不同电脑/系统可用音色不一样。
-          若你之后接入专业 TTS（阿里/火山/OpenAI），只需把每个景点的 <code>voice_text</code> 换成音频 URL 即可。
+          ✅ 想要“稳定甜美女声”：请生成并提交 <code>/audio</code> 目录下的 8 个 MP3。<br/>
+          ✅ 没有 MP3 也能用：网页会启用 Web Speech 女声兜底（但不同电脑音色不一致）。
         </p>
 
         <div class="cta">
-          <div class="warn">✅ 产品展示建议</div>
           <div class="small">
-            想做到“高德 MCP 实时拉取”但又不暴露 Key：用一个极小的后端/边缘函数生成 <code>guide.json</code>，静态页只读 JSON。
-            这样既像产品，又稳定。
+            你可以先把网页上线，再慢慢把音频补齐。补齐后无需改代码，刷新页面就自动变“甜美女声导览”。
           </div>
         </div>
       </div>
@@ -241,156 +223,188 @@
 <footer>© AI Travel Assistant Demo · 潢川县</footer>
 
 <script>
-  // ====== 演示数据（静态网页稳定用法）======
-  // 你可以用高德 MCP 在本地生成更精确的 POI，再替换下面字段。
+  // =========================
+  // 1) 数据：固定图片 + 固定音频文件名
+  //    音频文件名约定：/audio/spot1.mp3 ... spot8.mp3
+  // =========================
   const DATA = {
     city: "河南省潢川县",
     spots: [
       {
-        name: "潢川城市公园（示例）",
-        address: "潢川县城区（以实际为准）",
-        location: "115.05,32.13",
-        tags: ["自然","拍照"],
-        highlights: ["傍晚散步很舒服","适合城市慢游","随手拍有氛围感"],
-        best_time: "日落前后 / 周末清晨",
-        duration: "1.5–2 小时",
-        photo_query: "Xinyang park sunset",
-        voice_text: "现在我们来到潢川的城市公园。这里很适合放慢脚步：沿着湖边或林荫道走一圈，日落时光线会变得特别柔和。建议你把节奏调慢一点，找一个安静的角落拍几张照片，再用一杯热饮把旅途的疲惫轻轻抚平。"
+        id: 1,
+        name: "光州公园（潢河生态廊道）",
+        address: "潢川县城区潢河两侧（以地图为准）",
+        location: "115.058,32.137",
+        tags: ["自然","夜游","拍照"],
+        highlights: ["滨水步道适合 City Walk","夜间灯光与水景氛围感强","绿化花境很出片"],
+        best_time: "傍晚日落到夜间",
+        duration: "1.5–2.5 小时",
+        image: "https://cds.chinadaily.com.cn/dams/capital/image/202304/24/64465105e4b030573a5d14e3.png",
+        voice_text: "我们现在来到潢川的光州公园。最推荐的打开方式，是沿着潢河慢慢走一段：先看水面和树影，再把节奏交给晚风。日落后灯光亮起，氛围会更温柔。你可以找一段最舒服的步道，边走边拍，不要赶时间。"
       },
       {
-        name: "潢川老城街巷（示例）",
-        address: "潢川县老城区（以实际为准）",
-        location: "115.05,32.12",
-        tags: ["历史","美食","夜游"],
-        highlights: ["更接地气的生活感","适合小吃扫街","夜晚更有烟火气"],
+        id: 2,
+        name: "光州之门（夜景水幕）",
+        address: "光州公园内（以地图为准）",
+        location: "115.058,32.137",
+        tags: ["夜游","拍照"],
+        highlights: ["夜间水幕与灯光秀视觉冲击强","适合拍视频与夜景人像","很像城市新地标"],
+        best_time: "天黑后（更好看）",
+        duration: "30–60 分钟",
+        image: "https://cds.chinadaily.com.cn/dams/capital/image/202304/24/6446510be4b030573a5d14f2.jpeg",
+        voice_text: "这一处更像潢川的夜晚名片。水幕和灯光叠在一起，会有一点点梦幻的舞台感。建议你站远一些取景，把人群、光线和水幕都收入画面；想拍人像就选侧面光，脸部会更柔和、更甜。"
+      },
+      {
+        id: 3,
+        name: "镇潢桥（潢河桥景）",
+        address: "潢川县城区（以地图为准）",
+        location: "115.055,32.130",
+        tags: ["拍照","夜游"],
+        highlights: ["桥与河景构图很舒服","适合黄昏或清晨拍照","沿岸散步很惬意"],
+        best_time: "清晨或傍晚",
+        duration: "40–90 分钟",
+        image: "https://youimg1.c-ctrip.com/target/10050t000000id2dx4DF0.jpg",
+        voice_text: "镇潢桥这一段很适合停下来，安静看一会儿河。黄昏时水面会有层次，桥的线条也更好看。你可以沿岸走走，找到能同时拍到桥和河的角度，按下快门的时候，记得把呼吸放慢一点。"
+      },
+      {
+        id: 4,
+        name: "潢河滨水风光（河岸慢走）",
+        address: "潢川县潢河沿线（以地图为准）",
+        location: "115.056,32.134",
+        tags: ["自然","拍照"],
+        highlights: ["河湾视野开阔","适合轻运动与放空","春夏绿意最浓"],
+        best_time: "晴天上午 / 傍晚",
+        duration: "1–2 小时",
+        image: "https://youimg1.c-ctrip.com/target/100o0t000000i9eg0CFE2.jpg",
+        voice_text: "如果你想要最轻松的一段行程，就来潢河边走走吧。这里不需要打卡任务，只需要把步子慢下来：看水面、看树影、听风。旅行里最治愈的时刻，往往就是这种不被催促的散步。"
+      },
+      {
+        id: 5,
+        name: "黄国故城（遗址·人文向）",
+        address: "潢川县城西（以地图为准）",
+        location: "115.000,32.120",
+        tags: ["历史","文化","拍照"],
+        highlights: ["历史感很强","适合人文向拍照","更推荐白天慢游"],
+        best_time: "上午 9:00–11:30",
+        duration: "1.5–2.5 小时",
+        image: "https://5b0988e595225.cdn.sohucs.com/images/20180707/70171aec8ed442e097dc012b545ea17a.jpeg",
+        voice_text: "黄国故城更像一段被保留下来的时间。来到这里建议你把节奏放慢：先用眼睛看格局与地形，再去想象当年的城与人。它不靠热闹取胜，而靠历史感。白天来光线干净，拍照也会更有质感。"
+      },
+      {
+        id: 6,
+        name: "望河楼（城市记忆）",
+        address: "小潢河北岸一带（以地图为准）",
+        location: "115.058,32.131",
+        tags: ["历史","拍照","夜游"],
+        highlights: ["本地地标辨识度高","适合与河景一起取景","夜间灯光更有味道"],
+        best_time: "傍晚 / 夜间",
+        duration: "40–90 分钟",
+        image: "https://5b0988e595225.cdn.sohucs.com/images/20180707/f419eaa9fe4546259db682d37381c08a.jpeg",
+        voice_text: "望河楼属于那种一眼就知道是本地地标的地方。你可以把它当成潢川的一段城市记忆：白天看建筑的线条，晚上看灯光与河面的呼应。建议你在楼前停一会儿，留一点点安静给自己。"
+      },
+      {
+        id: 7,
+        name: "铁旗杆（古物地标）",
+        address: "潢川县南城一带（以地图为准）",
+        location: "115.060,32.115",
+        tags: ["历史","文化","拍照"],
+        highlights: ["很有年代感的城市符号","适合人文纪念照","更推荐白天参观"],
+        best_time: "白天",
+        duration: "30–60 分钟",
+        image: "https://5b0988e595225.cdn.sohucs.com/images/20180707/eceb000f84044dbdadc24b8c74de9859.jpeg",
+        voice_text: "铁旗杆是潢川很有年代感的符号。它不是商业化景点，但很适合作为旅途的一段注脚。建议白天来，光线会把材质细节照得更清楚；拍照时可以留一点天空，让画面更有张力。"
+      },
+      {
+        id: 8,
+        name: "老城街巷与小吃夜逛（体验向）",
+        address: "潢川县老城区（以地图为准）",
+        location: "115.050,32.125",
+        tags: ["夜游","亲子","美食"],
+        highlights: ["烟火气最浓","适合边吃边逛","更接地气的生活感"],
         best_time: "18:00–21:00",
         duration: "2–3 小时",
-        photo_query: "China old street night market",
-        voice_text: "如果你想用最轻松的方式认识一座城，就去它的老街走走。潢川的老城街巷更像生活的舞台：小吃摊的香气、店铺的灯光、路人随意的笑声，都很真实。晚上来这里慢慢逛，别赶时间，看到喜欢的就停下来尝一口。"
-      },
-      {
-        name: "近郊湿地/水域风光（示例）",
-        address: "潢川县周边（以实际为准）",
-        location: "115.08,32.16",
-        tags: ["自然","亲子","拍照"],
-        highlights: ["水面与天空很出片","亲子轻徒步友好","雨后空气更清透"],
-        best_time: "春秋季 / 雨后晴天",
-        duration: "2–3 小时",
-        photo_query: "wetland boardwalk sunrise",
-        voice_text: "接下来这段更适合把心情放到自然里。湿地或水域最大的魅力，是那种开阔：风一吹，水面会有细碎的光。建议你沿步道慢慢走，给自己一点安静的时间。亲子出行也很友好，但记得带防蚊与轻便雨具。"
-      },
-      {
-        name: "本地纪念场馆（示例）",
-        address: "潢川县城区（以实际为准）",
-        location: "115.06,32.13",
-        tags: ["历史","文化"],
-        highlights: ["适合雨天替代行程","快速了解地方脉络","拍照更偏人文风"],
-        best_time: "上午 9:00–11:30",
-        duration: "1–2 小时",
-        photo_query: "China museum interior",
-        voice_text: "如果你遇到雨天，或者想快速读懂当地的脉络，纪念场馆会是很稳的选择。这里的价值在于“线索”：你会知道这座城市从哪里来、经历过什么。建议你带着问题去看，比如：这片土地最重要的资源与故事是什么？答案往往就藏在展陈里。"
-      },
-      {
-        name: "郊野田园与采摘（示例）",
-        address: "潢川县近郊（以实际为准）",
-        location: "115.02,32.10",
-        tags: ["亲子","自然"],
-        highlights: ["亲子体验感强","适合半日游","拍照氛围轻松"],
-        best_time: "周末白天 / 秋季更佳",
-        duration: "半天",
-        photo_query: "farm orchard picking",
-        voice_text: "想要轻松一点的半日游，可以安排郊野田园或采摘体验。这里的快乐很直接：新鲜、放松、没有压力。亲子家庭尤其适合，孩子会更愿意参与。建议你穿舒适的鞋子，带一点湿巾和饮用水，把行程当作一次小小的逃离。"
-      },
-      {
-        name: "城市夜景散步路线（示例）",
-        address: "潢川县中心区域（以实际为准）",
-        location: "115.05,32.135",
-        tags: ["夜游","拍照"],
-        highlights: ["夜晚更舒服","适合轻量运动","氛围感很强"],
-        best_time: "20:00–22:00",
-        duration: "1–1.5 小时",
-        photo_query: "city night lights river walk",
-        voice_text: "到了夜里，旅行的节奏更适合‘轻轻地’。挑一条灯光柔和的散步路线，不需要走太远，只要让心情慢慢沉下来。夜景最出片的不是宏大，而是细节：路灯的反光、街边的招牌、风吹过的树影。"
-      },
-      {
-        name: "本地特色市场（示例）",
-        address: "潢川县城区（以实际为准）",
-        location: "115.055,32.125",
-        tags: ["夜游","美食","亲子"],
-        highlights: ["烟火气最浓","小吃选择多","适合边吃边逛"],
-        best_time: "傍晚到夜间",
-        duration: "1–2 小时",
-        photo_query: "China street food market",
-        voice_text: "市场是一座城市最不设防的地方。你会听到讨价还价的声音，闻到刚出锅的香气，也会看到最朴素的生活。来这里不需要攻略，跟着人流走就行。建议先少量多样地尝试，找到最喜欢的那一家，再回头认真吃一份。"
-      },
-      {
-        name: "周边短途一日自然点（示例）",
-        address: "潢川县周边（以实际为准）",
-        location: "115.10,32.09",
-        tags: ["自然","拍照"],
-        highlights: ["适合短途自驾","光线好时非常出片","可与农家乐组合"],
-        best_time: "晴天上午 / 春秋",
-        duration: "半天到一天",
-        photo_query: "countryside hills morning mist",
-        voice_text: "如果你愿意把半径稍微放大一点，周边的短途自然点会给你更开阔的景色。挑一个晴天早上出发，光线会更干净。可以把它和农家乐、乡间小路组合成轻松的一日游。记得留白，不要把时间排满，才更像旅行。"
+        image: "https://images.unsplash.com/photo-1514933651103-005eec06c04b?q=80&w=1600&auto=format&fit=crop",
+        voice_text: "想用最轻松的方式认识一座城，就去它的老街走走。晚上来最合适：灯光亮起来，香气也会跟着冒出来。建议你少量多样地试几样，找到最喜欢的那一家再回头认真吃一份。慢慢逛，会更甜。"
       }
     ],
     itinerary: [
       {
         day: "Day 1 · 城市慢游与夜晚烟火",
         plan: [
-          "上午：城市公园/主城散步，建立‘潢川第一印象’",
+          "上午：潢河滨水慢走，建立“潢川第一印象”",
           "中午：本地家常/特色小馆（少量多样）",
-          "下午：纪念场馆/人文点（雨天也可）",
-          "晚上：老城街巷或市场扫街 + 夜景散步"
+          "下午：黄国故城（人文慢游）",
+          "晚上：光州公园夜景 + 光州之门水幕"
         ],
-        backup: "雨天：纪念场馆 + 室内咖啡/茶饮 + 市场短逛"
+        backup: "雨天：纪念/场馆类点位 + 室内茶饮 + 老城短逛"
       },
       {
-        day: "Day 2 · 自然与亲子体验",
+        day: "Day 2 · 地标与桥景拍照",
         plan: [
-          "上午：湿地/水域风光轻徒步（带防蚊）",
-          "中午：近郊餐馆/农家菜",
-          "下午：田园/采摘体验或轻松露营风格点位",
-          "晚上：自由活动（推荐轻量夜走）"
+          "上午：镇潢桥桥景拍照（清晨光线更好）",
+          "中午：城区口碑店",
+          "下午：望河楼（人文+河景）",
+          "晚上：老城街巷小吃夜逛"
         ],
-        backup: "雨天：室内场馆 + 美食路线（不赶景点）"
+        backup: "雨天：调整为“美食路线 + 室内点位”，不赶景点"
       },
       {
-        day: "Day 3 · 周边短途与收官",
+        day: "Day 3 · 城市符号与轻松收官",
         plan: [
-          "上午：周边短途自然点（自驾更佳）",
-          "中午：在路上挑一家口碑店收官",
-          "下午：回城补拍/买伴手礼，留出返程时间"
+          "上午：铁旗杆（城市符号）",
+          "中午：收官一餐（挑你最喜欢的那家）",
+          "下午：回河边补拍/买伴手礼，留出返程时间"
         ],
-        backup: "雨天：回城补拍 + 伴手礼 + 提前返程"
+        backup: "雨天：提前返程 + 城区补拍 + 伴手礼"
       }
     ],
     food: [
-      "老城小吃：建议‘少量多样’，先试再回头吃最喜欢的",
-      "夜市/市场：逛吃体验优先，别把自己吃撑影响后半段",
-      "本地家常馆：更容易踩中真实口味（避开过度网红）",
+      "老城小吃：少量多样，先试再回头吃最喜欢的",
+      "夜逛节奏：别把自己吃撑，留点空间给夜景",
+      "本地家常馆：更容易踩中真实口味，避开过度网红",
       "热饮/甜品：夜晚散步配一杯，体验更完整"
     ],
     traffic: [
-      "高铁/汽车到达后：建议先把酒店放好再出门，城市节奏更轻松",
-      "县城内：短距离可打车/共享出行；夜晚散步路线更舒适",
-      "周边点位：更建议自驾或包车（时间更可控）"
+      "到达后建议先放好行李再出门，城市节奏会更轻松",
+      "县城内短距离：打车/共享出行都方便，夜晚步行更舒服",
+      "如果要扩展周边：自驾/包车更省心（时间可控）"
     ]
   };
 
-  // ====== 语音（Web Speech API：尽量选择中文女声）======
+  // =========================
+  // 2) 音频播放（优先 MP3，其次 Web Speech 兜底）
+  // =========================
+  const player = new Audio();
+  player.preload = "auto";
+  let playingAll = false;
+
+  function stopAllAudio(){
+    playingAll = false;
+    player.pause();
+    player.currentTime = 0;
+    if (window.speechSynthesis?.speaking) window.speechSynthesis.cancel();
+  }
+
+  function playMp3(url){
+    return new Promise((resolve, reject)=>{
+      player.onended = () => resolve();
+      player.onerror = () => reject(new Error("mp3_load_failed"));
+      player.src = url;
+      player.play().then(resolve).catch(reject);
+    });
+  }
+
+  // --- Web Speech 女声兜底：甜一点（略快、更高 pitch） ---
   const synth = window.speechSynthesis;
   let voices = [];
   let femaleVoice = null;
-  let currentUtter = null;
 
   function loadVoices(){
     voices = synth.getVoices() || [];
     const zh = voices.filter(v => /zh|Chinese/i.test(v.lang));
     femaleVoice =
-      zh.find(v => /female|woman|xiaoxiao|xiaoyi|tingting|huihui|yaoyao|meimei/i.test(v.name)) ||
-      zh.find(v => /Microsoft Xiaoxiao|Xiaoxiao|Xiaoyi/i.test(v.name)) ||
+      zh.find(v => /Xiaoxiao|Xiaoyi|Xiaochen|Yaoyao|Meimei|Tingting|Huihui/i.test(v.name)) ||
+      zh.find(v => /female|woman/i.test(v.name)) ||
       zh[0] || voices[0] || null;
   }
   loadVoices();
@@ -398,32 +412,62 @@
     speechSynthesis.onvoiceschanged = loadVoices;
   }
 
-  function stopSpeak(){
-    if (synth && synth.speaking) synth.cancel();
-    currentUtter = null;
+  function speakFallback(text){
+    return new Promise((resolve)=>{
+      if (!synth) return resolve();
+      const u = new SpeechSynthesisUtterance(text);
+      if (femaleVoice) u.voice = femaleVoice;
+      // “甜一点”的感觉：略快一点 + 更高 pitch（别太夸张）
+      u.rate = 1.02;
+      u.pitch = 1.25;
+      u.volume = 1;
+      u.onend = resolve;
+      synth.cancel();
+      synth.speak(u);
+    });
   }
 
-  function speakText(text){
-    stopSpeak();
-    const u = new SpeechSynthesisUtterance(text);
-    if (femaleVoice) u.voice = femaleVoice;
-    u.rate = 0.92; u.pitch = 1.05; u.volume = 1;
-    currentUtter = u;
-    synth.speak(u);
+  async function playSpotVoice(spot){
+    stopAllAudio();
+
+    const mp3Url = `audio/spot${spot.id}.mp3`;
+    try{
+      await playMp3(mp3Url);
+    }catch(e){
+      // MP3 没有或加载失败 → 兜底朗读
+      await speakFallback(`${spot.name}。${spot.voice_text}`);
+    }
   }
 
-  // ====== 渲染 ======
+  async function playAllGuide(){
+    stopAllAudio();
+    playingAll = true;
+
+    const intro = "欢迎来到河南省潢川县。接下来我会用甜甜的语气，带你快速浏览八个精选点位，并给出三日路线建议。";
+    try{
+      await playMp3("audio/intro.mp3");
+    }catch(e){
+      await speakFallback(intro);
+    }
+
+    for (const s of DATA.spots){
+      if (!playingAll) break;
+      try{
+        await playMp3(`audio/spot${s.id}.mp3`);
+      }catch(e){
+        await speakFallback(`${s.name}。${s.voice_text}`);
+      }
+    }
+    playingAll = false;
+  }
+
+  // =========================
+  // 3) 渲染
+  // =========================
   const wrap = document.getElementById("spotsWrap");
   const chips = [...document.querySelectorAll(".chip")];
 
-  function imgUrl(query){
-    // Unsplash 不需要 key，稳定，适合 demo
-    const q = encodeURIComponent(query);
-    return `https://images.unsplash.com/featured/?${q}&w=1600&auto=format&fit=crop&q=80`;
-  }
-
   function amapSearchLink(name){
-    // 打开高德搜索页：无需 key，避免暴露
     const q = encodeURIComponent(`${DATA.city} ${name}`);
     return `https://ditu.amap.com/search?query=${q}`;
   }
@@ -434,14 +478,12 @@
     list.forEach((s, idx) => {
       const card = document.createElement("div");
       card.className = "spot";
-      card.dataset.tags = s.tags.join(",");
 
-      const img = imgUrl(s.photo_query || (DATA.city + " 风景"));
       card.innerHTML = `
         <div class="spotGrid">
           <div class="spotMedia">
             <span class="badge">#${idx+1} · ${s.tags[0] || "精选"}</span>
-            <img src="${img}" alt="${s.name}"
+            <img src="${s.image}" alt="${s.name}"
               onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1600&auto=format&fit=crop';" />
           </div>
           <div class="spotBody">
@@ -458,24 +500,25 @@
             <p class="hl"><strong>亮点：</strong>${(s.highlights||[]).join("；")}。</p>
 
             <div class="kv">
-              <div>🕒 最佳时间：<span class="ok">${s.best_time || "—"}</span></div>
-              <div>⏳ 建议停留：<span class="ok">${s.duration || "—"}</span></div>
+              <div>🕒 最佳时间：<span style="color:var(--good)">${s.best_time || "—"}</span></div>
+              <div>⏳ 建议停留：<span style="color:var(--good)">${s.duration || "—"}</span></div>
             </div>
 
             <div class="spotActions">
-              <button class="btn" data-say>语音讲解</button>
+              <button class="btn" data-say>甜美女声讲解</button>
               <button class="btn secondary" data-stop>停止</button>
               <a class="linkBtn" href="${amapSearchLink(s.name)}" target="_blank" rel="noreferrer">打开高德地图</a>
+            </div>
+
+            <div class="small" style="margin-top:10px">
+              音频优先：<code>/audio/spot${s.id}.mp3</code>（没有则自动朗读兜底）
             </div>
           </div>
         </div>
       `;
 
-      card.querySelector("[data-say]").onclick = () => {
-        const text = `${s.name}。${s.voice_text || ""}`;
-        speakText(text);
-      };
-      card.querySelector("[data-stop]").onclick = stopSpeak;
+      card.querySelector("[data-say]").onclick = () => playSpotVoice(s);
+      card.querySelector("[data-stop]").onclick = stopAllAudio;
 
       wrap.appendChild(card);
     });
@@ -517,24 +560,8 @@
   });
 
   // 全局播放/停止
-  document.getElementById("stopAll").onclick = stopSpeak;
-  document.getElementById("playAll").onclick = () => {
-    const intro = `欢迎来到河南省潢川县。接下来我会用温柔的节奏，带你快速浏览八个精选点位，并给出三日路线建议。`;
-    const seq = [intro, ...DATA.spots.map(s=>`${s.name}。${s.voice_text}`)];
-    // 简单串播：每段结束继续下一段
-    stopSpeak();
-    let i = 0;
-    const playNext = () => {
-      if (i >= seq.length) return;
-      const u = new SpeechSynthesisUtterance(seq[i++]);
-      if (femaleVoice) u.voice = femaleVoice;
-      u.rate = 0.92; u.pitch = 1.05; u.volume = 1;
-      u.onend = playNext;
-      currentUtter = u;
-      synth.speak(u);
-    };
-    playNext();
-  };
+  document.getElementById("stopAll").onclick = stopAllAudio;
+  document.getElementById("playAll").onclick = playAllGuide;
 
   // 初始渲染
   render("all");
