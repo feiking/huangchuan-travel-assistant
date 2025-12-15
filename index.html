@@ -1,0 +1,543 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI 旅行助手 · 河南省潢川县深度攻略</title>
+  <meta name="description" content="潢川县深度旅游攻略：精选景点、3日路线、精美配图与女性语音讲解。纯静态网页，打开即用。" />
+  <link rel="preconnect" href="https://images.unsplash.com" />
+  <style>
+    :root{
+      --bg:#070b18;
+      --glass:rgba(255,255,255,.10);
+      --stroke:rgba(255,255,255,.18);
+      --txt:#eef1f6;
+      --muted:#a8b0c2;
+      --accent:#7aa2ff;
+      --gold:#e6c17a;
+      --good:#6ee7b7;
+      --bad:#fb7185;
+      --shadow: 0 18px 50px rgba(0,0,0,.45);
+      --r:18px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+      color:var(--txt);
+      background:
+        radial-gradient(1200px 600px at 10% -10%, #1b2455, transparent 60%),
+        radial-gradient(1000px 500px at 110% 10%, #2a1f4d, transparent 55%),
+        radial-gradient(800px 500px at 50% 120%, #183a2b, transparent 55%),
+        var(--bg);
+    }
+    a{color:inherit}
+    header{position:relative; overflow:hidden; padding:88px 18px 112px; text-align:center;}
+    .heroBg{
+      position:absolute; inset:0; z-index:-1; opacity:.36;
+      background:url("https://images.unsplash.com/photo-1524492412937-b28074a5d7da?q=80&w=2400&auto=format&fit=crop") center/cover no-repeat;
+      filter:saturate(1.1) contrast(1.05);
+    }
+    .heroGlow{
+      position:absolute; inset:-30%;
+      background: radial-gradient(circle at 30% 30%, rgba(122,162,255,.25), transparent 35%),
+                  radial-gradient(circle at 70% 20%, rgba(230,193,122,.20), transparent 35%),
+                  radial-gradient(circle at 50% 70%, rgba(110,231,183,.18), transparent 40%);
+      z-index:-1;
+      transform: rotate(6deg);
+    }
+    h1{margin:0 0 10px; font-size:clamp(30px,5vw,56px); letter-spacing:.6px;}
+    .sub{max-width:980px;margin:0 auto;color:var(--muted);line-height:1.6}
+    .pillRow{margin-top:16px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap}
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 12px; border-radius:999px;
+      background:rgba(0,0,0,.25); border:1px solid rgba(255,255,255,.18);
+      color:var(--muted); backdrop-filter: blur(8px);
+    }
+    .container{max-width:1200px;margin:-58px auto 64px; padding:0 18px}
+    .grid{display:grid; grid-template-columns:repeat(12,1fr); gap:18px}
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.05));
+      border:1px solid var(--stroke);
+      border-radius:var(--r);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+    }
+    .inner{padding:18px}
+    .topbar{display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between}
+    .filters{display:flex; flex-wrap:wrap; gap:10px}
+    .chip{
+      padding:8px 12px; border-radius:999px; cursor:pointer;
+      border:1px solid rgba(255,255,255,.28);
+      background:rgba(0,0,0,.18);
+      color:var(--txt);
+      user-select:none;
+    }
+    .chip.active{background:linear-gradient(135deg,var(--accent),#9bd0ff); color:#061022; border-color:transparent;}
+    .btn{
+      padding:10px 14px; border-radius:999px; cursor:pointer; border:0;
+      background:linear-gradient(135deg,var(--accent),#9bd0ff);
+      color:#061022; font-weight:700;
+    }
+    .btn.secondary{
+      background:transparent; color:var(--txt);
+      border:1px solid rgba(255,255,255,.35);
+    }
+    .btnRow{display:flex; gap:10px; flex-wrap:wrap}
+    .spots{grid-column:span 12}
+    .aside{grid-column:span 12}
+    @media (min-width: 960px){
+      .spots{grid-column:span 8}
+      .aside{grid-column:span 4}
+    }
+    .spot{
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:16px;
+      overflow:hidden;
+      background:rgba(0,0,0,.14);
+      transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+    }
+    .spot:hover{
+      transform: translateY(-3px);
+      border-color: rgba(122,162,255,.55);
+      box-shadow: 0 18px 48px rgba(0,0,0,.45);
+    }
+    .spotGrid{
+      display:grid; grid-template-columns: 1fr; gap:0;
+    }
+    .spotMedia{
+      position:relative;
+      height:260px;
+      background:#0c1226;
+    }
+    .spotMedia img{
+      width:100%; height:100%; object-fit:cover; display:block;
+    }
+    .badge{
+      position:absolute; left:14px; top:14px;
+      padding:6px 10px; border-radius:999px;
+      background:rgba(0,0,0,.35);
+      border:1px solid rgba(255,255,255,.22);
+      backdrop-filter: blur(10px);
+      font-size:12px; color:var(--txt);
+    }
+    .spotBody{padding:14px 14px 16px}
+    .spotTitle{display:flex; gap:10px; align-items:baseline; justify-content:space-between; flex-wrap:wrap}
+    .spotTitle h3{margin:0; font-size:18px}
+    .meta{color:var(--muted); font-size:12px}
+    .tags{display:flex; gap:8px; flex-wrap:wrap; margin:10px 0 10px}
+    .tag{font-size:12px; color:#061022; background:var(--gold); padding:4px 8px; border-radius:999px;}
+    .hl{margin:0; color:var(--txt); line-height:1.65}
+    .kv{
+      display:grid; grid-template-columns: 1fr 1fr;
+      gap:10px; margin-top:12px;
+      color:var(--muted); font-size:12px;
+    }
+    .kv div{
+      padding:10px; border:1px solid rgba(255,255,255,.14);
+      border-radius:14px; background:rgba(0,0,0,.12);
+    }
+    .spotActions{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px}
+    .linkBtn{
+      padding:9px 12px; border-radius:999px; font-size:13px;
+      border:1px solid rgba(255,255,255,.32);
+      background:rgba(0,0,0,.12);
+      color:var(--txt); text-decoration:none;
+    }
+    .sectionTitle{margin:0 0 10px; font-size:18px}
+    .small{color:var(--muted); font-size:12px; line-height:1.6}
+    .itinerary .day{
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:16px; padding:12px; background:rgba(0,0,0,.12);
+      margin-top:10px;
+    }
+    .day h4{margin:0 0 8px}
+    .list{margin:0; padding-left:18px; color:var(--muted); line-height:1.8}
+    .cta{
+      margin-top:14px; padding:14px; border-radius:16px;
+      border:1px solid rgba(255,255,255,.16);
+      background: linear-gradient(135deg, rgba(122,162,255,.18), rgba(230,193,122,.12));
+    }
+    footer{padding:26px; text-align:center; color:var(--muted)}
+    .warn{color:rgba(255,255,255,.75)}
+    .ok{color:var(--good)}
+  </style>
+</head>
+<body>
+<header>
+  <div class="heroBg"></div>
+  <div class="heroGlow"></div>
+  <h1>河南省潢川县 · AI 深度旅游攻略</h1>
+  <p class="sub">
+    这是一份“像产品一样”的旅游攻略 Demo：精选景点、三日路线、精美配图，并带<strong>女性温柔导游语音</strong>讲解。
+    纯静态网页，一条链接即可访问与聆听。
+  </p>
+  <div class="pillRow">
+    <div class="pill">📍 城市：潢川县</div>
+    <div class="pill">🗺️ 类型筛选：自然 / 历史 / 亲子 / 夜游</div>
+    <div class="pill">🎧 语音：优先女声（系统可用则更佳）</div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="grid">
+
+    <div class="card spots">
+      <div class="inner">
+        <div class="topbar">
+          <div>
+            <h2 style="margin:0 0 6px">精选景点 · Top 8</h2>
+            <div class="small">提示：图片来自 Unsplash 自动检索；地图按钮会打开高德搜索页（无需暴露 Key）。</div>
+          </div>
+          <div class="btnRow">
+            <button class="btn" id="playAll">播放整段导览</button>
+            <button class="btn secondary" id="stopAll">停止</button>
+          </div>
+        </div>
+
+        <div class="filters" style="margin-top:12px">
+          <div class="chip active" data-filter="all">全部</div>
+          <div class="chip" data-filter="自然">自然</div>
+          <div class="chip" data-filter="历史">历史</div>
+          <div class="chip" data-filter="亲子">亲子</div>
+          <div class="chip" data-filter="夜游">夜游</div>
+        </div>
+
+        <div id="spotsWrap" style="margin-top:14px"></div>
+      </div>
+    </div>
+
+    <aside class="card aside">
+      <div class="inner">
+        <h3 class="sectionTitle">3 天游玩路线</h3>
+        <div class="itinerary" id="itinerary"></div>
+
+        <h3 class="sectionTitle" style="margin-top:16px">美食与夜晚</h3>
+        <ul class="list" id="food"></ul>
+
+        <h3 class="sectionTitle" style="margin-top:16px">交通到达</h3>
+        <ul class="list" id="traffic"></ul>
+
+        <h3 class="sectionTitle" style="margin-top:16px">语音说明</h3>
+        <p class="small">
+          本页使用浏览器 Web Speech API 进行讲解：会尝试选择<strong>中文女声</strong>；不同电脑/系统可用音色不一样。
+          若你之后接入专业 TTS（阿里/火山/OpenAI），只需把每个景点的 <code>voice_text</code> 换成音频 URL 即可。
+        </p>
+
+        <div class="cta">
+          <div class="warn">✅ 产品展示建议</div>
+          <div class="small">
+            想做到“高德 MCP 实时拉取”但又不暴露 Key：用一个极小的后端/边缘函数生成 <code>guide.json</code>，静态页只读 JSON。
+            这样既像产品，又稳定。
+          </div>
+        </div>
+      </div>
+    </aside>
+
+  </section>
+</main>
+
+<footer>© AI Travel Assistant Demo · 潢川县</footer>
+
+<script>
+  // ====== 演示数据（静态网页稳定用法）======
+  // 你可以用高德 MCP 在本地生成更精确的 POI，再替换下面字段。
+  const DATA = {
+    city: "河南省潢川县",
+    spots: [
+      {
+        name: "潢川城市公园（示例）",
+        address: "潢川县城区（以实际为准）",
+        location: "115.05,32.13",
+        tags: ["自然","拍照"],
+        highlights: ["傍晚散步很舒服","适合城市慢游","随手拍有氛围感"],
+        best_time: "日落前后 / 周末清晨",
+        duration: "1.5–2 小时",
+        photo_query: "Xinyang park sunset",
+        voice_text: "现在我们来到潢川的城市公园。这里很适合放慢脚步：沿着湖边或林荫道走一圈，日落时光线会变得特别柔和。建议你把节奏调慢一点，找一个安静的角落拍几张照片，再用一杯热饮把旅途的疲惫轻轻抚平。"
+      },
+      {
+        name: "潢川老城街巷（示例）",
+        address: "潢川县老城区（以实际为准）",
+        location: "115.05,32.12",
+        tags: ["历史","美食","夜游"],
+        highlights: ["更接地气的生活感","适合小吃扫街","夜晚更有烟火气"],
+        best_time: "18:00–21:00",
+        duration: "2–3 小时",
+        photo_query: "China old street night market",
+        voice_text: "如果你想用最轻松的方式认识一座城，就去它的老街走走。潢川的老城街巷更像生活的舞台：小吃摊的香气、店铺的灯光、路人随意的笑声，都很真实。晚上来这里慢慢逛，别赶时间，看到喜欢的就停下来尝一口。"
+      },
+      {
+        name: "近郊湿地/水域风光（示例）",
+        address: "潢川县周边（以实际为准）",
+        location: "115.08,32.16",
+        tags: ["自然","亲子","拍照"],
+        highlights: ["水面与天空很出片","亲子轻徒步友好","雨后空气更清透"],
+        best_time: "春秋季 / 雨后晴天",
+        duration: "2–3 小时",
+        photo_query: "wetland boardwalk sunrise",
+        voice_text: "接下来这段更适合把心情放到自然里。湿地或水域最大的魅力，是那种开阔：风一吹，水面会有细碎的光。建议你沿步道慢慢走，给自己一点安静的时间。亲子出行也很友好，但记得带防蚊与轻便雨具。"
+      },
+      {
+        name: "本地纪念场馆（示例）",
+        address: "潢川县城区（以实际为准）",
+        location: "115.06,32.13",
+        tags: ["历史","文化"],
+        highlights: ["适合雨天替代行程","快速了解地方脉络","拍照更偏人文风"],
+        best_time: "上午 9:00–11:30",
+        duration: "1–2 小时",
+        photo_query: "China museum interior",
+        voice_text: "如果你遇到雨天，或者想快速读懂当地的脉络，纪念场馆会是很稳的选择。这里的价值在于“线索”：你会知道这座城市从哪里来、经历过什么。建议你带着问题去看，比如：这片土地最重要的资源与故事是什么？答案往往就藏在展陈里。"
+      },
+      {
+        name: "郊野田园与采摘（示例）",
+        address: "潢川县近郊（以实际为准）",
+        location: "115.02,32.10",
+        tags: ["亲子","自然"],
+        highlights: ["亲子体验感强","适合半日游","拍照氛围轻松"],
+        best_time: "周末白天 / 秋季更佳",
+        duration: "半天",
+        photo_query: "farm orchard picking",
+        voice_text: "想要轻松一点的半日游，可以安排郊野田园或采摘体验。这里的快乐很直接：新鲜、放松、没有压力。亲子家庭尤其适合，孩子会更愿意参与。建议你穿舒适的鞋子，带一点湿巾和饮用水，把行程当作一次小小的逃离。"
+      },
+      {
+        name: "城市夜景散步路线（示例）",
+        address: "潢川县中心区域（以实际为准）",
+        location: "115.05,32.135",
+        tags: ["夜游","拍照"],
+        highlights: ["夜晚更舒服","适合轻量运动","氛围感很强"],
+        best_time: "20:00–22:00",
+        duration: "1–1.5 小时",
+        photo_query: "city night lights river walk",
+        voice_text: "到了夜里，旅行的节奏更适合‘轻轻地’。挑一条灯光柔和的散步路线，不需要走太远，只要让心情慢慢沉下来。夜景最出片的不是宏大，而是细节：路灯的反光、街边的招牌、风吹过的树影。"
+      },
+      {
+        name: "本地特色市场（示例）",
+        address: "潢川县城区（以实际为准）",
+        location: "115.055,32.125",
+        tags: ["夜游","美食","亲子"],
+        highlights: ["烟火气最浓","小吃选择多","适合边吃边逛"],
+        best_time: "傍晚到夜间",
+        duration: "1–2 小时",
+        photo_query: "China street food market",
+        voice_text: "市场是一座城市最不设防的地方。你会听到讨价还价的声音，闻到刚出锅的香气，也会看到最朴素的生活。来这里不需要攻略，跟着人流走就行。建议先少量多样地尝试，找到最喜欢的那一家，再回头认真吃一份。"
+      },
+      {
+        name: "周边短途一日自然点（示例）",
+        address: "潢川县周边（以实际为准）",
+        location: "115.10,32.09",
+        tags: ["自然","拍照"],
+        highlights: ["适合短途自驾","光线好时非常出片","可与农家乐组合"],
+        best_time: "晴天上午 / 春秋",
+        duration: "半天到一天",
+        photo_query: "countryside hills morning mist",
+        voice_text: "如果你愿意把半径稍微放大一点，周边的短途自然点会给你更开阔的景色。挑一个晴天早上出发，光线会更干净。可以把它和农家乐、乡间小路组合成轻松的一日游。记得留白，不要把时间排满，才更像旅行。"
+      }
+    ],
+    itinerary: [
+      {
+        day: "Day 1 · 城市慢游与夜晚烟火",
+        plan: [
+          "上午：城市公园/主城散步，建立‘潢川第一印象’",
+          "中午：本地家常/特色小馆（少量多样）",
+          "下午：纪念场馆/人文点（雨天也可）",
+          "晚上：老城街巷或市场扫街 + 夜景散步"
+        ],
+        backup: "雨天：纪念场馆 + 室内咖啡/茶饮 + 市场短逛"
+      },
+      {
+        day: "Day 2 · 自然与亲子体验",
+        plan: [
+          "上午：湿地/水域风光轻徒步（带防蚊）",
+          "中午：近郊餐馆/农家菜",
+          "下午：田园/采摘体验或轻松露营风格点位",
+          "晚上：自由活动（推荐轻量夜走）"
+        ],
+        backup: "雨天：室内场馆 + 美食路线（不赶景点）"
+      },
+      {
+        day: "Day 3 · 周边短途与收官",
+        plan: [
+          "上午：周边短途自然点（自驾更佳）",
+          "中午：在路上挑一家口碑店收官",
+          "下午：回城补拍/买伴手礼，留出返程时间"
+        ],
+        backup: "雨天：回城补拍 + 伴手礼 + 提前返程"
+      }
+    ],
+    food: [
+      "老城小吃：建议‘少量多样’，先试再回头吃最喜欢的",
+      "夜市/市场：逛吃体验优先，别把自己吃撑影响后半段",
+      "本地家常馆：更容易踩中真实口味（避开过度网红）",
+      "热饮/甜品：夜晚散步配一杯，体验更完整"
+    ],
+    traffic: [
+      "高铁/汽车到达后：建议先把酒店放好再出门，城市节奏更轻松",
+      "县城内：短距离可打车/共享出行；夜晚散步路线更舒适",
+      "周边点位：更建议自驾或包车（时间更可控）"
+    ]
+  };
+
+  // ====== 语音（Web Speech API：尽量选择中文女声）======
+  const synth = window.speechSynthesis;
+  let voices = [];
+  let femaleVoice = null;
+  let currentUtter = null;
+
+  function loadVoices(){
+    voices = synth.getVoices() || [];
+    const zh = voices.filter(v => /zh|Chinese/i.test(v.lang));
+    femaleVoice =
+      zh.find(v => /female|woman|xiaoxiao|xiaoyi|tingting|huihui|yaoyao|meimei/i.test(v.name)) ||
+      zh.find(v => /Microsoft Xiaoxiao|Xiaoxiao|Xiaoyi/i.test(v.name)) ||
+      zh[0] || voices[0] || null;
+  }
+  loadVoices();
+  if (speechSynthesis.onvoiceschanged !== undefined) {
+    speechSynthesis.onvoiceschanged = loadVoices;
+  }
+
+  function stopSpeak(){
+    if (synth && synth.speaking) synth.cancel();
+    currentUtter = null;
+  }
+
+  function speakText(text){
+    stopSpeak();
+    const u = new SpeechSynthesisUtterance(text);
+    if (femaleVoice) u.voice = femaleVoice;
+    u.rate = 0.92; u.pitch = 1.05; u.volume = 1;
+    currentUtter = u;
+    synth.speak(u);
+  }
+
+  // ====== 渲染 ======
+  const wrap = document.getElementById("spotsWrap");
+  const chips = [...document.querySelectorAll(".chip")];
+
+  function imgUrl(query){
+    // Unsplash 不需要 key，稳定，适合 demo
+    const q = encodeURIComponent(query);
+    return `https://images.unsplash.com/featured/?${q}&w=1600&auto=format&fit=crop&q=80`;
+  }
+
+  function amapSearchLink(name){
+    // 打开高德搜索页：无需 key，避免暴露
+    const q = encodeURIComponent(`${DATA.city} ${name}`);
+    return `https://ditu.amap.com/search?query=${q}`;
+  }
+
+  function render(filter="all"){
+    wrap.innerHTML = "";
+    const list = DATA.spots.filter(s => filter==="all" ? true : s.tags.includes(filter));
+    list.forEach((s, idx) => {
+      const card = document.createElement("div");
+      card.className = "spot";
+      card.dataset.tags = s.tags.join(",");
+
+      const img = imgUrl(s.photo_query || (DATA.city + " 风景"));
+      card.innerHTML = `
+        <div class="spotGrid">
+          <div class="spotMedia">
+            <span class="badge">#${idx+1} · ${s.tags[0] || "精选"}</span>
+            <img src="${img}" alt="${s.name}"
+              onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1600&auto=format&fit=crop';" />
+          </div>
+          <div class="spotBody">
+            <div class="spotTitle">
+              <h3>${s.name}</h3>
+              <div class="meta">${s.location ? "坐标：" + s.location : ""}</div>
+            </div>
+            <div class="meta">地址：${s.address || "—"}</div>
+
+            <div class="tags">
+              ${(s.tags||[]).map(t=>`<span class="tag">${t}</span>`).join("")}
+            </div>
+
+            <p class="hl"><strong>亮点：</strong>${(s.highlights||[]).join("；")}。</p>
+
+            <div class="kv">
+              <div>🕒 最佳时间：<span class="ok">${s.best_time || "—"}</span></div>
+              <div>⏳ 建议停留：<span class="ok">${s.duration || "—"}</span></div>
+            </div>
+
+            <div class="spotActions">
+              <button class="btn" data-say>语音讲解</button>
+              <button class="btn secondary" data-stop>停止</button>
+              <a class="linkBtn" href="${amapSearchLink(s.name)}" target="_blank" rel="noreferrer">打开高德地图</a>
+            </div>
+          </div>
+        </div>
+      `;
+
+      card.querySelector("[data-say]").onclick = () => {
+        const text = `${s.name}。${s.voice_text || ""}`;
+        speakText(text);
+      };
+      card.querySelector("[data-stop]").onclick = stopSpeak;
+
+      wrap.appendChild(card);
+    });
+  }
+
+  chips.forEach(c=>{
+    c.addEventListener("click", ()=>{
+      chips.forEach(x=>x.classList.remove("active"));
+      c.classList.add("active");
+      render(c.dataset.filter);
+    });
+  });
+
+  // 侧边栏内容
+  const it = document.getElementById("itinerary");
+  DATA.itinerary.forEach(d=>{
+    const el = document.createElement("div");
+    el.className = "day";
+    el.innerHTML = `
+      <h4>${d.day}</h4>
+      <ul class="list">${d.plan.map(x=>`<li>${x}</li>`).join("")}</ul>
+      <div class="small" style="margin-top:8px">☔ 雨天备选：${d.backup}</div>
+    `;
+    it.appendChild(el);
+  });
+
+  const food = document.getElementById("food");
+  DATA.food.forEach(x=>{
+    const li = document.createElement("li");
+    li.textContent = x;
+    food.appendChild(li);
+  });
+
+  const traffic = document.getElementById("traffic");
+  DATA.traffic.forEach(x=>{
+    const li = document.createElement("li");
+    li.textContent = x;
+    traffic.appendChild(li);
+  });
+
+  // 全局播放/停止
+  document.getElementById("stopAll").onclick = stopSpeak;
+  document.getElementById("playAll").onclick = () => {
+    const intro = `欢迎来到河南省潢川县。接下来我会用温柔的节奏，带你快速浏览八个精选点位，并给出三日路线建议。`;
+    const seq = [intro, ...DATA.spots.map(s=>`${s.name}。${s.voice_text}`)];
+    // 简单串播：每段结束继续下一段
+    stopSpeak();
+    let i = 0;
+    const playNext = () => {
+      if (i >= seq.length) return;
+      const u = new SpeechSynthesisUtterance(seq[i++]);
+      if (femaleVoice) u.voice = femaleVoice;
+      u.rate = 0.92; u.pitch = 1.05; u.volume = 1;
+      u.onend = playNext;
+      currentUtter = u;
+      synth.speak(u);
+    };
+    playNext();
+  };
+
+  // 初始渲染
+  render("all");
+</script>
+</body>
+</html>
